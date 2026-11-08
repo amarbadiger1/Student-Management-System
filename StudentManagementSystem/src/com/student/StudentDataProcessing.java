@@ -66,15 +66,21 @@ public class StudentDataProcessing {
 
 	public static void showToppers() {
 		Set<Student> allStudents = getAllStudent();
-		
-		allStudents.stream().sorted((a,b)->(int) b.getMarks()-(int) a.getMarks()).limit(10).forEach(i->System.out.println(i));
-	} 
+
+		allStudents.stream().sorted((a, b) -> (int) b.getMarks() - (int) a.getMarks()).limit(10)
+				.forEach(i -> System.out.println(i));
+	}
 
 	public static void showPassedStudents() {
+		Set<Student> allStudents = getAllStudent();
 
+		allStudents.stream().filter(a -> a.getMarks() > 40).forEach(System.out::println);
 	}
 
 	public static void showAverageMarks() {
+		Set<Student> allStudents = getAllStudent();
 
+		double average = allStudents.stream().mapToDouble(a -> a.getMarks()).average().orElse(0.0);
+		System.out.println("Average " + average);
 	}
 }
