@@ -65,8 +65,10 @@ public class StudentDataProcessing {
 	}
 
 	public static void showToppers() {
-
-	}
+		Set<Student> allStudents = getAllStudent();
+		
+		allStudents.stream().sorted((a,b)->(int) b.getMarks()-(int) a.getMarks()).limit(10).forEach(i->System.out.println(i));
+	} 
 
 	public static void showPassedStudents() {
 
