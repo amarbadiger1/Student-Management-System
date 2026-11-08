@@ -1,5 +1,7 @@
 package com.student;
 
+import java.util.Objects;
+
 public class Student {
 	private String studentName;
 	private String studentId;
@@ -28,6 +30,25 @@ public class Student {
 
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(studentId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (this == obj)
+			return true;
+
+		if (!(obj instanceof Student)) {
+			return false;
+		}
+		
+		Student s = (Student) obj;
+		return this.studentId.equals(s.studentId);
 	}
 
 	@Override
